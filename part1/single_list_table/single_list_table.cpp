@@ -143,11 +143,9 @@ void Shead::ShowSlist()
 {
 	Slist *ptr = head->next;
 	int i = 0;
-	while(ptr != NULL)
-	{
-		std::cout << "the elem of index = " << i << " data = " << ptr->info << std::endl;
+	while(ptr != NULL){
+		printf("index = %d addr = 0x%p ptr->info = %s\n", i++, ptr, ptr->info);
 		ptr = ptr->next;
-		i++;
 	}
 }
 
@@ -207,6 +205,8 @@ bool Shead::TailDelete()
 	}
 	return true;
 }
+
+
 /*
  *	这个应该为选择排序
  * */
@@ -250,32 +250,51 @@ void Shead::SortSlist()
 /*
  *	这个为冒泡排序
  * */
-void Shead::SortSlistBubble()
-{
-	if(head->next == NULL || head->next->next == NULL)
-	{
-		return ;	
+void Shead::SortSlistBubble(){
+	/*如果单链表的头: 为空
+	 *    没有一个节点: 为空
+	 *    只有一个节点的时候 跳出*/
+	if(head == NULL || head->next == NULL || head->next->next == NULL){
+		return ;
 	}
-	Slist *pptr = head->next;
-	Slist *ptr  = head->next;
-	for(; pptr != NULL; pptr = pptr->next)
-	{
-		for(; ptr != NULL; ptr = ptr->next)
-		{
-			if(strncmp(pptr->info, ptr->info) > 0)
-			{
-				if(pptr == head->next)
-				{
-					head->next = ptr;
-					pptr->next = ptr->next;
-					ptr->next = pptr;
+	int slist_len = GetLengthSlist();
+
+	for(int i = 0; i < slist_len - 1; i++){
+	
+		Slist *s_ptr = head->next;
+		for(int j = 0; j < slist_len - 1 - i; j++){
+	
+			if(strcmp(s_ptr->info, s_ptr->next->info) > 0){
+				if(s_ptr == head->next){
+
+					Slist *tmp = s_ptr->next;
+					s_ptr->next = tmp->next;
+					head->next = tmp;
+					tmp->next = s_ptr;
+					continue;
 				}
+				else{
+
+					Slist *tmp = head->next;
+					while(tmp->next != s_ptr){
+						tmp = tmp->next;
+					}
+					Slist *zz = s_ptr->next;
+					tmp->next = s_ptr->next;
+					s_ptr->next = zz->next;
+					zz->next = s_ptr;
+					continue;
+				}
+			}
+			else{
+				s_ptr = s_ptr->next;
 			}
 		}
 	}
-
 }
-
+/*
+ *	逆至单链表
+ * */
 Slist* Shead::Reverse(Slist *ptr, Slist *pptr)
 {
 	if(pptr == NULL)

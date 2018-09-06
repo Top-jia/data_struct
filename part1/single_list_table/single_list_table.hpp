@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<assert.h>
 #include<string.h>
-
+#include<stdio.h>
 #define chars	char *
 #define	STR_LEN	15
 typedef struct single_link_list{
@@ -37,6 +37,7 @@ class Shead{
 		bool MergeSlist(const Shead &src);
 		void SortSlist();
 		void ReverseSlist();
+		void SortSlistBubble();
 };
 
 

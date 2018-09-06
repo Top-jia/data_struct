@@ -7,7 +7,7 @@ CC = g++
 INCLUDE = .
 
 #Option for development
-CFLAGS	= g 
+CFLAGS	=g 
 
 #Debug
 DEBUG	= gdb

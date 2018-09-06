@@ -8,9 +8,8 @@ int main()
 	std::cout << "the length of note = " << note.GetLengthSlist() << std::endl;
 	Shead t_note(note);
 	t_note.ShowSlist();
-
 	/*
-	 * 测试头删和韦删, 求长度
+	 * 测试头删和未删, 求长度
 	for(int i = 0; i < note.GetLengthSlist(); i++)
 	{
 		std::cout << "the loop of index = " << i << std::endl;
@@ -29,7 +28,7 @@ int main()
 		std::cout << "the elem of index = " << i << " data = "  << buffer << std::endl;
 	}
 	*/
-
+	/*
 	std::cout << "Test Merge data " << std::endl;
 	note.MergeSlist(t_note);
 	note.ShowSlist();
@@ -37,9 +36,9 @@ int main()
 	std::cout << "Test Reverse data " << std::endl;
 	t_note.ReverseSlist();
 	t_note.ShowSlist();
-	
+	*/
 	std::cout << "Test Sort data" << std::endl;
-	t_note.SortSlist();
+	t_note.SortSlistBubble();
 	t_note.ShowSlist();
 	return 0;
 } 

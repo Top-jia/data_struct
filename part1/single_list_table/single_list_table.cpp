@@ -208,44 +208,9 @@ bool Shead::TailDelete()
 
 
 /*
- *	这个应该为选择排序
+ *	这个应该为选择排序, 这个可以实现, 但是为了时间关系,暂不考虑
  * */
-void Shead::SortSlist()
-{
-	if(head->next == NULL || head->next->next == NULL)
-	{
-		return ;
-	}
-
-	Slist *pptr = head->next;
-	for(int i = 0; i < number - 1; i++)
-	{
-		Slist *ptr = pptr->next;
-		for(int j = 0; j < number - i -1; j++)
-		{	
-			if(strncmp(pptr->info, ptr->info, STR_LEN) < 0)
-			{
-				if(pptr == head->next)
-				{
-					head->next = ptr;
-					pptr->next = ptr->next;
-					ptr->next = pptr;
-					continue;
-				}
-				Slist *s_ptr = head->next;
-				while(s_ptr->next != pptr)
-				{
-					s_ptr = s_ptr->next;
-				}
-				s_ptr->next = ptr;
-				pptr->next  = ptr->next;
-				ptr->next = pptr;
-				continue;
-			}
-			ptr = ptr->next;
-		}
-	}
-}
+void Shead::SortSlist(){}
 
 /*
  *	这个为冒泡排序
